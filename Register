@@ -1,0 +1,222 @@
+package quiz;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Wrapper;
+import quiz.Connect;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+public class Register extends JFrame 
+{
+	private JPanel contentPane; 
+	private JTextField txtUser;
+	private JTextField txtName;
+	private JTextField txtMail;
+	private JTextField txtPassword1;
+	private JButton btnSignup;
+	private JButton btnLogin;
+	protected java.lang.String Spassword;
+	
+	static final String DB_URL = "jdbc:mysql://localhost/student";
+	static final String USER = "root";
+	static final String PASS = "shamanthar";
+	protected static final String String = null;
+	
+	
+	public static void main(String[] args) 
+	{
+	Connect.main(null);
+
+		
+		EventQueue.invokeLater(new Runnable() 
+		{
+			public void run() 
+			{
+				try 
+				{
+					Register frame = new Register();
+					frame.setVisible(true);
+				} 
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+
+	public Register() 
+	{	
+		setTitle("Sign Up"+Connect.success);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 600);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0,0,50));
+		JLabel label1 = new JLabel("Sign Up.");
+		label1.setText("Sign Up");
+		label1.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+		label1.setForeground(new Color(255,255,255));
+		label1.setBounds(170, 10, 150, 50);
+		label1.setSize(150, 50);
+		contentPane.add(label1);
+		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtName = new JTextField();
+		txtName.setBounds(170, 120, 150, 20);
+		txtName.setSize(150,20);
+		txtName.setBorder(null);
+		contentPane.add(txtName);
+		txtName.setColumns(20);
+		txtMail = new JTextField();
+		txtMail.setBounds(170, 180, 150, 20);
+		txtMail.setBorder(null);
+		contentPane.add(txtMail);
+		txtMail.setColumns(20);
+		txtUser = new JTextField();
+		txtUser.setBounds(170, 240, 150, 20);
+		txtUser.setBorder(null);
+		contentPane.add(txtUser);
+		txtUser.setColumns(20);
+		txtPassword1 = new JPasswordField();
+		txtPassword1.setBounds(170, 300, 150, 20);
+		txtPassword1.setBorder(null);
+		contentPane.add(txtPassword1);
+		txtPassword1.setColumns(20);
+		
+		JLabel lblName = new JLabel("Full Name:");
+		lblName.setForeground(new Color(255,255,255));
+		lblName.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		lblName.setBounds(170,100,90,15);
+		contentPane.add(lblName);
+		JLabel lblMail = new JLabel("Email:");
+		lblMail.setForeground(new Color(255,255,255));
+		lblMail.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		lblMail.setBounds(170, 160, 90, 15);
+		contentPane.add(lblMail);
+		JLabel lblUserName = new JLabel("User Name:");
+		lblUserName.setForeground(new Color(255,255,255));
+		lblUserName.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		lblUserName.setBounds(170, 220, 90, 15);
+		contentPane.add(lblUserName);
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setForeground(new Color(255,255,255));
+		lblPassword.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		lblPassword.setBounds(170, 280, 90, 15);
+		contentPane.add(lblPassword);
+		
+		JLabel lbltxt = new JLabel();
+		lbltxt.setText("Already have an accont ?");
+		lbltxt.setBounds(170, 450, 200, 20);
+		lbltxt.setForeground((Color.gray));
+		contentPane.add(lbltxt); 
+	
+		btnSignup = new JButton("SignUp");
+		btnSignup.setBounds(170, 350, 90, 25);
+		btnSignup.setBackground(new Color(0,200,100));
+		btnSignup.setForeground(new Color(255,255,255));
+		btnSignup.setSize(100, 40);
+		btnSignup.setBorder(null);
+		btnSignup.setFont(new Font("Comic Sans MS",Font.BOLD,16));
+		contentPane.add(btnSignup);
+		btnSignup.addActionListener(new ActionListener() 
+                {
+		                public void actionPerformed(ActionEvent e) 
+                                {	
+		                	Connect.main(null);
+		                    if(Connect.success.equals("Connected to database successfully")) {
+
+                                
+				Wrapper conn = null;
+				try  
+                                {
+				String full_name= "";
+				String g_mail= "";
+				String user_name = "";
+				String passwd = "";
+				
+				full_name = txtName.getText().trim();
+				g_mail = txtMail.getText().trim();
+				user_name = txtUser.getText().trim();
+				passwd = txtPassword1.getText().trim();
+				
+				if (user_name.equals("")|| passwd.equals(""))
+				{
+					JOptionPane.showMessageDialog(null," name or password or Role is wrong","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else  
+                                {
+					String IQuery = "INSERT INTO `student`.`quiz`(`full_name`,`g_mail`,`user_name`,`passwd`) VALUES('"+full_name+"','"+g_mail+"','"+user_name+"', '"+passwd+"')";
+					System.out.println(IQuery);
+					System.out.println("Connecting to a selected database...");
+				
+				conn = DriverManager.getConnection(DB_URL, USER, PASS);
+					System.out.println("Connected database successfully...");
+					  
+				((Connection)conn).createStatement().execute(IQuery);
+					String SMessage = "Record added for "+user_name;
+					
+	                    JOptionPane.showMessageDialog(null,SMessage,"Message",JOptionPane.PLAIN_MESSAGE);
+					((java.sql.Connection)conn).close();
+				}				
+			}
+			catch (SQLException se) 
+			{
+			
+				se.printStackTrace();
+			}
+			catch (Exception a) 
+			{
+				a.printStackTrace();
+			}
+                                }
+		                    else {
+		                        	 String SMessage="\n------Error Info------\n$database_cnt_error.Proceeding in Offline Mode :localhost server must be present."
+		         			    			+ "\nIf not it accepts any password or username in login screen(Registration not going to work in Offline Mode)";
+		         					JOptionPane.showMessageDialog(null,SMessage,"About",JOptionPane.ERROR_MESSAGE); 
+		         					new Login().setVisible(true);
+		         					dispose();
+		        	                
+		                    }
+                                }
+		});
+                
+		
+		btnLogin = new JButton("Login");
+
+		btnLogin.setBounds(320, 450, 90, 25);
+		btnLogin.setForeground(new Color(255,255,255));
+		btnLogin.setBackground(new Color(0,200,100));
+		btnLogin.setFont(new Font("Comic Sans MS",Font.BOLD,16));
+		btnLogin.setBorder(null);
+		contentPane.add(btnLogin);
+	
+		btnLogin.addActionListener(new ActionListener() 
+		{
+
+		    public void actionPerformed(ActionEvent e) {
+		        
+		        new Login().setVisible(true); 
+		        dispose();
+		    }
+
+		});
+	}
+	
+	
+}
