@@ -1,0 +1,145 @@
+package quiz;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import quiz.Questions;
+import quiz.Login;
+
+public class Results extends JFrame 
+{
+	private JPanel contentPane;
+	private JButton Again;
+	private JButton Exit;
+	private JButton Answers;
+	public static String results;
+	private boolean login;
+	protected java.lang.String Spassword;
+	
+
+	static final String DB_URL = "jdbc:mysql://localhost/student";
+	
+	static final String USER = "root";
+	static final String PASS = "shamanthar";
+	protected static final String String = null;
+	
+	public static void main(String[] args) 
+	{
+		EventQueue.invokeLater(new Runnable() 
+		{
+			public void run() 
+			{
+				try  
+				{
+					Results frame = new Results();
+					frame.setVisible(true);
+				} 
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+
+	public Results()
+	{	
+		setTitle("QUIZ:Results");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 550, 400);
+		contentPane = new JPanel();
+		contentPane.setBorder(null);
+		setContentPane(contentPane);
+		contentPane.setBackground(new Color(0,0,50));
+		contentPane.setLayout(null);
+		int results=Questions.score;
+		String result=String.valueOf(results);
+		
+	
+		JLabel username = new JLabel("<html>Good Job....<html>"+Login.usernameq+"!!!");
+		username.setBounds(150, 20, 400, 70);
+		username.setSize(400, 70);
+		username.setFont(new Font("Comic Sans MS",Font.BOLD,25));
+		username.setForeground(Color.white);
+		contentPane.add(username);
+		results=10-results;
+		String wrong=String.valueOf(results);
+		
+		JLabel finalresult = new JLabel("<html>Your FinalScore is:<html>"+result+"<html><br><br>Total Right Answers: <html>"+result+"<html><br><br>Total Wrong Answers: <html>"+wrong);
+		finalresult.setBounds(200, 100, 200, 150);
+		finalresult.setFont(new Font("Comic Sans MS",Font.BOLD,15));
+		finalresult.setForeground(Color.white);
+		contentPane.add(finalresult);
+		
+		
+		Exit = new JButton("Exit");
+		Exit.setBounds(240, 280, 100, 30);
+		Exit.setBackground(new Color(0,200,100));
+		Exit.setSize(100, 30);
+		Exit.setFont(new Font("Comic Sans MS",Font.BOLD,15));
+		Exit.setForeground(Color.white);
+		Exit.setBorder(null);
+		contentPane.add(Exit);
+		Exit.addActionListener(new ActionListener() 
+                {
+		                public void actionPerformed(ActionEvent e) 
+                                {				
+                                
+		                	System.exit(0);
+                                }
+		});
+	
+	
+		Again = new JButton("Play Again");
+		Again.setBackground(new Color(0,200,100));
+		Again.setSize(100, 30);
+		Again.setFont(new Font("Comic Sans MS",Font.BOLD,15));
+		Again.setForeground(Color.white);
+		Again.setBorder(null);
+		Again.setBounds(100, 280, 100, 30);
+		contentPane.add(Again);	
+		Again.addActionListener(new ActionListener() 
+		{
+
+		    public void actionPerformed(ActionEvent e) {
+		        
+		        new Login().setVisible(true); 
+		        dispose();
+		    }
+
+		});
+		
+		
+		Answers = new JButton("Answers");
+		Answers.setBounds(380, 280, 89, 23);
+		Answers.setBackground(new Color(0,200,100));
+		Answers.setSize(100, 30);
+		Answers.setFont(new Font("Comic Sans MS",Font.BOLD,15));
+		Answers.setForeground(Color.white);
+		Answers.setBorder(null);
+		contentPane.add(Answers);	
+		Answers.addActionListener(new ActionListener() 
+		{
+
+		    public void actionPerformed(ActionEvent e) {
+		        
+		        new Answers().setVisible(true); 
+		        dispose();
+		    }
+
+		});
+			
+		
+		JLabel label2 = new JLabel("");
+		label2.setText("");
+		label2.setBounds(300, 300, 400, 100);
+		contentPane.add(label2);
+}}
