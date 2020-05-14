@@ -31,9 +31,9 @@ public class Questions extends JFrame
 	private JLabel question;
 	private JLabel username;
 	private JSeparator separator;
-	 String[][] a;
+	 String[][] a;                    // answers string array
 	 String[][] q;
-	static int score=0;
+	static int score=0;               // questions string array
 	int count=0;
 	int c=0;
 	static String usernameq;
@@ -65,78 +65,78 @@ public class Questions extends JFrame
         
         Game();
       q =new String[10][5];
-      //Questions are stored in q[][]
-      q[0][0]="how many days in an year?";
-      q[0][1]="two hundred";
-      q[0][2]="threehundred sixtyfive";
-      q[0][3]="hundred";
-      q[0][4]="four hundred";
+                                                                                                //Questions are stored in q[][]
+      q[0][0]="Which of the following is not a Java features?";
+      q[0][1]="Dynamic";
+      q[0][2]="Architecture Neutral";
+      q[0][3]="Use of pointers";
+      q[0][4]="Object-oriented";
       
-      q[1][0]="Who Invented C?";
-      q[1][1]="Microsoft";
-      q[1][2]="Bell";
-      q[1][3]="Dennis Ritchie";
-      q[1][4]="Sun Micros";
+      q[1][0]=" _____ is used to find and fix bugs in the Java programs.";
+      q[1][1]="JVM";
+      q[1][2]="JRE";
+      q[1][3]="JDK";
+      q[1][4]="JDB";
       
-      q[2][0]="who is the pm of india?";
-      q[2][1]="nehuru";
-      q[2][2]="modi";
-      q[2][3]="abdul kalam";
-      q[2][4]="Andy Rubins";
+      q[2][0]="What does the expression float a = 35 / 0 return?";
+      q[2][1]="0";
+      q[2][2]="Not a number";
+      q[2][3]="Infinity";
+      q[2][4]="Run time exception";
       
-      q[3][0]="Who Invented Google?";
-      q[3][1]="Larry Page";
-      q[3][2]="Bell";
-      q[3][3]="Dell";
-      q[3][4]="Sun Micros";
+      q[3][0]="Which package contains the Random class?";
+      q[3][1]="java.util package";
+      q[3][2]="java.lang package";
+      q[3][3]="java.awt package";
+      q[3][4]="java.io package";
       
-      q[4][0]="in which year 2000 rupess notes came into use?";
-      q[4][1]="twothousand seventeen";
-      q[4][2]="twothousand sixteen";
-      q[4][3]="ninteen fiftyfive ";
-      q[4][4]="ninteen ninty five";
+      q[4][0]="Which of the following is an immediate subclass of the Panel class?";
+      q[4][1]="Applet class";
+      q[4][2]="Window class";
+      q[4][3]="Frame class";
+      q[4][4]="Dialog class";
       
-      q[5][0]="CEO of Google?";
-      q[5][1]="Sundar Pichai";
-      q[5][2]="Satyam";
-      q[5][3]="Steeve Jobs";
-      q[5][4]="Larry Page";
+      q[5][0]="Which keyword is used for accessing the features of a package?";
+      q[5][1]="export";
+      q[5][2]="import";
+      q[5][3]="package";
+      q[5][4]="extends";
       
-      q[6][0]="what is the capital of india?";
-      q[6][1]="new delhi";
-      q[6][2]="hyderabad";
-      q[6][3]="mumbai";
-      q[6][4]="amaravathi";
+      q[6][0]="In java, jar stands for_____.";
+      q[6][1]="Java Archive Runner";
+      q[6][2]="Java Application Resource";
+      q[6][3]="Java Application Runner";
+      q[6][4]="None of the above";
       
-      q[7][0]="sun raises in the east?";
-      q[7][1]="TRUE";
-      q[7][2]="FALSE";
-      q[7][3]="hypotetical";
-      q[7][4]="None";
+      q[7][0]="What is the initial quantity of the ArrayList list?";
+      q[7][1]="5";
+      q[7][2]="0";
+      q[7][3]="10";
+      q[7][4]="100";
       
-      q[8][0]="Who has written this code?";
-      q[8][1]="Bill Gates";
-      q[8][2]="srilekha";
-      q[8][3]="Student";
-      q[8][4]="Professor";
+      q[8][0]="If a thread goes to sleep";
+      q[8][1]="It releases all the locks it has.";
+      q[8][2]="It does not release any locks.";
+      q[8][3]="It releases half of its locks";
+      q[8][4]="It releases all of its lock except one.";
       
-      q[9][0]="Who is the ceo of fb?";
-      q[9][1]="billgates";
-      q[9][2]="mark";
-      q[9][3]="rahul gandhi";
-      q[9][4]="nagarjuna";
-      //Answers are stored in a[][]
+      q[9][0]="Choose the appropraite data type for this fiels: isSwimmer";
+      q[9][1]="String";
+      q[9][2]="int";
+      q[9][3]="boolean";
+      q[9][4]="double";
+                                                                                           //Answers are stored in a[][]
       a=new String[10][5];
-      a[0][1]="threehundred sixtyfive";
-      a[1][1]="Dennis Ritchie";
-      a[2][1]="modi";
-      a[3][1]="Larry Page";
-      a[4][1]="twothousand sixteen";
-      a[5][1]="Sundar Pichai";
-      a[6][1]="new delhi";
-      a[7][1]="TRUE";
-      a[8][1]="srilekha";
-      a[9][1]="mark";
+      a[0][1]="Use of pointers";
+      a[1][1]="JDB";
+      a[2][1]="infinity";
+      a[3][1]="java.util package";
+      a[4][1]="Applet class";
+      a[5][1]="import";
+      a[6][1]="None of the above";
+      a[7][1]="10";
+      a[8][1]="It does not release any locks.";
+      a[9][1]="boolean";
      
 
 
@@ -144,7 +144,7 @@ public class Questions extends JFrame
 	}
 	 
 	 public String[][] qarray() {
-	        return q.clone();
+	        return q.clone();                       // creating the exact copy of q
 	    }
 	 public String[][] ansarray() {
 	        return a.clone();
@@ -188,24 +188,24 @@ public class Questions extends JFrame
         timer.setForeground(Color.white);
         timer.setFont(new Font("Comic Sans MS",Font.BOLD,20));
         final Timer t = new Timer(1000, new ActionListener() {
-            int time = 60;
+            int time = 180;                                                 // timer of 3 minutes
             @Override
             public void actionPerformed(ActionEvent e) {
                 time--;
-                timer.setText(format(time / 60) + ":" + format(time % 60));
+                timer.setText(format(time / 60) + ":" + format(time % 60));           // setting the tie in a label
                 if(c>=10) {
                     final Timer timer = (Timer) e.getSource();
-                	timer.stop();
+                	timer.stop();                                                  // timer stops when all questions are attempted
                 }else {
                 if (time == 0) {
                 	if(c>=10) {
                     final Timer timer = (Timer) e.getSource();
-                    timer.stop();
+                    timer.stop();                                                     // timer stops when time = 0
                 	}else {
                     JOptionPane.showMessageDialog(null,"Time Up Click Ok To Check Your Score","bye..",JOptionPane.ERROR_MESSAGE);
                     System.out.println(score);
         			new Results().setVisible(true);
-        			dispose();
+        			dispose();                                                       // clears the frame
                 	}
                 }
             }
@@ -357,14 +357,14 @@ public class Questions extends JFrame
 	protected void NextClicked(ActionEvent evt) {
 		
 		
-		if(getSelectedButtonText(opg)==a[c][1]) {
+		if(getSelectedButtonText(opg)==a[c][1]) {          // score and count is incremented when an option is selected
 			score++;
 			count++;
 			c++;
 		}
 		else
 		{
-			c++;
+			c++;                                      // count and number of questions is incremented when next is clicked
 			count++;
 		}
 			if(c!=10)
@@ -406,8 +406,8 @@ public class Questions extends JFrame
 	}
 	public void start(int i) {
 		
-		 question.setText(q[i][0]);
-	        op1.setText(q[i][1]);
+		 question.setText(q[i][0]);              // setting the question in the label
+	        op1.setText(q[i][1]);               // setting the option in the label
 	        op2.setText(q[i][2]);
 	        op3.setText(q[i][3]);
 	        op4.setText(q[i][4]);
