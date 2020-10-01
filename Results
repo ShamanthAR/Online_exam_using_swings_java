@@ -142,4 +142,5 @@ public class Results extends JFrame
 		label2.setText("");
 		label2.setBounds(300, 300, 400, 100);
 		contentPane.add(label2);
+		system.out.println("Hello Shamanth, How are you?");
 }}
